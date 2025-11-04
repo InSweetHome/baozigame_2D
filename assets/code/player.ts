@@ -32,7 +32,7 @@ export class player extends Component {
         // 每次触摸屏幕 都会生成一个新的箭矢并且平移到指定坐标。
         this.Arrow_Node = instantiate(this.Arrow_Prefab) // instantiate(预制体) 预制体实例化
         this.Arrow_Node.setParent(this.Arrow_Parent) //设置预制体的父节点
-        tween(this.Arrow_Node).to(0.5, {position: new Vec3(-3, 2.5, 0)}).start() //箭矢平滑移动动画
+        tween(this.Arrow_Node).to(0.5, {position: new Vec3(-3, -40, 0)}).start() //箭矢平滑移动动画
     }
 
     start() {

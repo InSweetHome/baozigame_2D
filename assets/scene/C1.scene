@@ -709,7 +709,7 @@
     "_enabled": true,
     "__prefab": null,
     "Arrow_Prefab": {
-      "__uuid__": "b80aff46-36af-4cf4-a7ff-74cb2d3df608",
+      "__uuid__": "4718aadb-f845-47f1-be22-c4fed37d0671",
       "__expectedType__": "cc.Prefab"
     },
     "Arrow_Parent": {
