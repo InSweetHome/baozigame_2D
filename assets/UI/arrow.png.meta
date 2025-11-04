@@ -2,7 +2,7 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "326ff44c-7c8e-40e4-9cd9-673cb4ae63af",
+  "uuid": "84251b41-84db-4e15-bb9e-50201a606c57",
   "files": [
     ".json",
     ".png"
@@ -10,20 +10,20 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "326ff44c-7c8e-40e4-9cd9-673cb4ae63af@6c48a",
-      "displayName": "target",
+      "uuid": "84251b41-84db-4e15-bb9e-50201a606c57@6c48a",
+      "displayName": "arrow",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "326ff44c-7c8e-40e4-9cd9-673cb4ae63af",
-        "isUuid": true,
-        "visible": false,
         "minfilter": "linear",
         "magfilter": "linear",
         "mipfilter": "none",
-        "anisotropy": 0
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "84251b41-84db-4e15-bb9e-50201a606c57",
+        "visible": false
       },
       "ver": "1.0.22",
       "imported": true,
@@ -34,21 +34,21 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "326ff44c-7c8e-40e4-9cd9-673cb4ae63af@f9941",
-      "displayName": "target",
+      "uuid": "84251b41-84db-4e15-bb9e-50201a606c57@f9941",
+      "displayName": "arrow",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
         "trimThreshold": 1,
         "rotated": false,
-        "offsetX": 0.5,
-        "offsetY": 2,
-        "trimX": 14,
-        "trimY": 14,
-        "width": 776,
-        "height": 758,
-        "rawWidth": 803,
-        "rawHeight": 790,
+        "offsetX": -7,
+        "offsetY": 14,
+        "trimX": 0,
+        "trimY": 35,
+        "width": 1850,
+        "height": 1860,
+        "rawWidth": 1864,
+        "rawHeight": 1958,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
@@ -60,17 +60,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -388,
-            -379,
+            -925,
+            -930,
             0,
-            388,
-            -379,
+            925,
+            -930,
             0,
-            -388,
-            379,
+            -925,
+            930,
             0,
-            388,
-            379,
+            925,
+            930,
             0
           ],
           "indexes": [
@@ -82,38 +82,38 @@
             3
           ],
           "uv": [
-            14,
-            776,
-            790,
-            776,
-            14,
-            18,
-            790,
-            18
+            0,
+            1923,
+            1850,
+            1923,
+            0,
+            63,
+            1850,
+            63
           ],
           "nuv": [
-            0.017434620174346202,
-            0.02278481012658228,
-            0.9838107098381071,
-            0.02278481012658228,
-            0.017434620174346202,
-            0.9822784810126582,
-            0.9838107098381071,
-            0.9822784810126582
+            0,
+            0.032175689479060264,
+            0.9924892703862661,
+            0.032175689479060264,
+            0,
+            0.9821246169560777,
+            0.9924892703862661,
+            0.9821246169560777
           ],
           "minPos": [
-            -388,
-            -379,
+            -925,
+            -930,
             0
           ],
           "maxPos": [
-            388,
-            379,
+            925,
+            930,
             0
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "326ff44c-7c8e-40e4-9cd9-673cb4ae63af@6c48a",
+        "imageUuidOrDatabaseUri": "84251b41-84db-4e15-bb9e-50201a606c57@6c48a",
         "atlasUuid": "",
         "trimType": "auto"
       },
@@ -129,6 +129,6 @@
     "type": "sprite-frame",
     "hasAlpha": true,
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "326ff44c-7c8e-40e4-9cd9-673cb4ae63af@6c48a"
+    "redirect": "84251b41-84db-4e15-bb9e-50201a606c57@6c48a"
   }
 }
