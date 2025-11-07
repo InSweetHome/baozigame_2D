@@ -32,17 +32,15 @@ export class player extends Component {
         // 每次触摸屏幕 都会生成一个新的箭矢并且平移到指定坐标。
         this.Arrow_Node = instantiate(this.Arrow_Prefab) // instantiate(预制体) 预制体实例化
         this.Arrow_Node.setParent(this.Arrow_Parent) //设置预制体的父节点
-        let World_pos = this.Arrow_Node.getWorldPosition()
-        // console.log("world pos1 = ", World_pos) //初始化的时候的默认坐标 
-        // console.log("arrow0 pos = ", this.Arrow_Node.position)
-        tween(this.Arrow_Node).to(0.1, {position: new Vec3(25, 80, 0)}).call(
+        // let World_pos = this.Arrow_Node.getWorldPosition()
+        tween(this.Arrow_Node).to(0.1, {position: new Vec3(28, 67, 0)}).call(
             () =>{
                 console.log("arrow1st pos = ", this.Arrow_Node.position) // call都是在tween动画播放结束后执行 所以此时相对坐标就是终点的坐标(25, 80, 0)
-                let World_pos = this.Arrow_Node.getWorldPosition() // 世界坐标也是到达终点后的世界坐标
-                console.log("world pos2 = ", World_pos)
-                this.Arrow_Node.setParent(this.Target_Node)
-                this.Arrow_Node.setWorldPosition(World_pos)
-                this.Arrow_Node.angle = -this.Target_Node.angle - 134
+                //let World_pos = this.Arrow_Node.getWorldPosition() // 世界坐标也是到达终点后的世界坐标
+                //console.log("world pos2 = ", World_pos)
+                this.Arrow_Node.setParent(this.Target_Node,true)
+                // this.Arrow_Node.setWorldPosition(World_pos)
+                // this.Arrow_Node.angle = -this.Target_Node.angle - 134
             }
         ).start() //箭矢平滑移动动画
     }
