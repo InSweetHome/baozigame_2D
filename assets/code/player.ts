@@ -28,7 +28,7 @@ export class player extends Component {
     Total_count = 0
     Goal: number = 0
     Speed = 0
-
+    a = false // 默认
     // 提示框
     @property(Node)
     Tips: Node = null
@@ -62,6 +62,7 @@ export class player extends Component {
                 Arrow_Node.setParent(this.Target_Node, true) // 箭矢粘住箭靶后需要跟着箭靶一起旋转
                 if(this.Is_Ture_Scroe){this.Get_Score() // 计分}
                 if(this.Score == this.Goal){
+                    this.a = true
                     input.off(Input.EventType.TOUCH_START, this.Touch_Start, this) //注销触碰生成箭矢事件 当前关卡结束或失败就不再生成新箭矢
                     this.Tips_UI(true) // 5分就成功
                 }
@@ -84,7 +85,7 @@ export class player extends Component {
         //箭矢碰撞触发执行函数
         input.off(Input.EventType.TOUCH_START, this.Touch_Start, this) //注销触碰生成箭矢事件 当前关卡结束或失败就不再生成新箭矢
         this.Is_Ture_Scroe = false // 碰到了就不计分
-        this.Tips_UI(false) // 成功失败判断
+        this.Tips_UI(this.a) // 成功失败判断
     }
 
     Tips_UI(a:boolean){
@@ -120,6 +121,7 @@ export class player extends Component {
 
 
     initLevel(level:number){
+        this.a = false
         this.Is_Ture_Scroe = true // 允许记分
         this.Exam_Arrow.active = true
         this.Is_Turn = true // 让箭靶重新移动
