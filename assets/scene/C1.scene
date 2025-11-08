@@ -775,7 +775,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 240,
+      "width": 0,
       "height": 75.6
     },
     "_anchorPoint": {
@@ -1149,7 +1149,6 @@
     "Target_Node": {
       "__id__": 11
     },
-    "Target_Speed": 50,
     "Tips": {
       "__id__": 14
     },
