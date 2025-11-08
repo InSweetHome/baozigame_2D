@@ -108,13 +108,14 @@ export class player extends Component {
     }
 
     Next_level(level:number ){ // 下一关按钮逻辑
-        input.on(Input.EventType.TOUCH_START, this.Touch_Start, this) // 触碰逻辑要再次开启
+        
         if(this.level>3){
-            console.log("重新开始")
-            director.loadScene("C1") //重新开始
+            console.log("你可以看见神了")
+            director.loadScene("God") //通关
         }else{this.initLevel(this.level) //进入下一关
             }
         this.Tips.active = false // 提示框关闭
+        input.on(Input.EventType.TOUCH_START, this.Touch_Start, this) // 触碰逻辑要再次开启
     }
 
 
