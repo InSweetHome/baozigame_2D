@@ -4,6 +4,9 @@ const { ccclass, property } = _decorator;
 @ccclass('player')
 export class player extends Component {
 
+    // 示例节点
+    @property(Node)
+    Exam_Arrow: Node = null
     // 箭矢预制体绑定
     @property(Prefab)
     Arrow_Prefab: Prefab = null
@@ -46,6 +49,7 @@ export class player extends Component {
 
     Touch_Start(){
         // 每次触摸屏幕 都会生成一个新的箭矢并且平移到指定坐标。
+        this.Exam_Arrow.active = false
         const Arrow_Node = instantiate(this.Arrow_Prefab) // instantiate(预制体) 预制体实例化
         Arrow_Node.setParent(this.Arrow_Parent) //设置预制体的父节点
         Arrow_Node.getComponent(Collider2D).on(Contact2DType.BEGIN_CONTACT, this.Arrow_Colide, this) // 箭矢生成后开始监听是否有碰撞
@@ -57,6 +61,7 @@ export class player extends Component {
                 if(this.Score == this.Goal){
                     this.Tips_UI(true) // 5分就成功
                 }
+                this.Exam_Arrow.active = true
             }
         }
         ).start() //箭矢平滑移动动画
@@ -96,6 +101,7 @@ export class player extends Component {
     }
 
     start() {
+        this.Exam_Arrow.active = true
         this.Score_Label.string = "Score: " + this.Score //初始化 游戏一开始就显示
         this.Goal_Label.string = "目标 : 射中" + this.Total_count + "个"
     }
