@@ -1,4 +1,4 @@
-import { _decorator, Collider2D, Component, Contact2DType, director, Director, Input, input, instantiate, Label, Node, Prefab, tween, Vec3, resources, JsonAsset } from 'cc';
+import { _decorator, Collider2D, Component, Contact2DType, director, Director, Input, input, instantiate, Label, Node, Prefab, tween, Vec3, resources, JsonAsset, Animation, AudioClip, AudioSource } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('player')
@@ -41,6 +41,21 @@ export class player extends Component {
     Is_Ture_Scroe = true // 更新开关 避免第五根箭碰到了也计分
     level: number = 0 // 初始化 第0关
 
+    @property(Animation) //获取动画组件
+    Button_Animation: Animation = null
+
+    // 导入音频资源 => 获取音频组件 => 指定音频资源 => 播放音频
+    @property(AudioClip)
+    Win: AudioClip = null
+    @property(AudioClip)
+    Colide: AudioClip = null
+
+    @property(Node)
+    Bg: Node = null!
+
+    
+    
+
     onLoad() {
         input.on(Input.EventType.TOUCH_START, this.Touch_Start, this)
     }
@@ -58,9 +73,12 @@ export class player extends Component {
         Arrow_Node.getComponent(Collider2D).on(Contact2DType.BEGIN_CONTACT, this.Arrow_Colide, this) // 箭矢生成后开始监听是否有碰撞
         tween(Arrow_Node).to(0.3, {position: new Vec3(25, 80, 0)}).call(
             () =>{// .call都是在箭矢粘在箭靶后发生的事情
+                
                 Arrow_Node.getComponent(Collider2D).off(Contact2DType.BEGIN_CONTACT, this.Arrow_Colide, this); //当箭矢粘在箭靶上后，表明发射成功，就不需要监听了，注销。
                 Arrow_Node.setParent(this.Target_Node, true) // 箭矢粘住箭靶后需要跟着箭靶一起旋转
-                if(this.Is_Ture_Scroe){this.Get_Score() // 计分}
+                if(this.Is_Ture_Scroe){
+                this.Get_Score() // 计分
+                this.Win_Audio_play() // 计分了才能播放
                 if(this.Score == this.Goal){
                     this.a = true
                     input.off(Input.EventType.TOUCH_START, this.Touch_Start, this) //注销触碰生成箭矢事件 当前关卡结束或失败就不再生成新箭矢
@@ -73,6 +91,35 @@ export class player extends Component {
         ).start() //箭矢平滑移动动画
     }
 
+
+    BGM_control(b:boolean){
+        const bgm = this.Bg.getComponent(AudioSource)
+        if(b){
+            bgm.loop = true
+            bgm.play()
+        }else{
+            bgm.stop()
+        }
+    }
+
+    // 射箭音效
+    Win_Audio_play(){
+        // 获取音频组件 => 指定音频资源 => 开始播放音频
+        const Audio = this.node.getComponent(AudioSource) // 获取音频组件
+        Audio.clip = this.Win // 指定音频资源
+        Audio.play() // 开始播放音频
+
+    }
+
+    // 碰撞音效
+    Colide_Audio_play(){
+        // 获取音频组件 => 指定音频资源 => 开始播放音频
+        const Audio = this.node.getComponent(AudioSource) // 获取音频组件
+        Audio.clip = this.Colide // 指定音频资源
+        Audio.play() // 开始播放音频
+
+    }
+
     Get_Score(){
         // 分数改变
         this.Score++ //分数增加
@@ -83,15 +130,19 @@ export class player extends Component {
 
     Arrow_Colide(){
         //箭矢碰撞触发执行函数
+        
         input.off(Input.EventType.TOUCH_START, this.Touch_Start, this) //注销触碰生成箭矢事件 当前关卡结束或失败就不再生成新箭矢
         this.Is_Ture_Scroe = false // 碰到了就不计分
         this.Tips_UI(this.a) // 成功失败判断
     }
 
     Tips_UI(a:boolean){
+        this.BGM_control(false)
         this.Tips.active = true // 提示框
+        this.Button_Animation.play('button')
         this.Is_Turn = false // 箭靶停止移动
         if(!a){
+            this.Colide_Audio_play()
             console.log("失败")
             this.Tips_Label.string = "失败!重新挑战"
         }else{
@@ -119,8 +170,10 @@ export class player extends Component {
         input.on(Input.EventType.TOUCH_START, this.Touch_Start, this) // 触碰逻辑要再次开启
     }
 
+    
 
     initLevel(level:number){
+        this.BGM_control(true)
         this.a = false
         this.Is_Ture_Scroe = true // 允许记分
         this.Exam_Arrow.active = true

@@ -224,5 +224,8 @@
       }
     },
     "globalConfigKey": "defaultConfig"
+  },
+  "macroConfig": {
+    "ENABLE_MULTI_TOUCH": false
   }
 }
